@@ -1,0 +1,28 @@
+import discord
+import random
+from discord.ext import commands
+
+# La variable intents almacena los privilegios del bot
+intents = discord.Intents.default()
+# Activar el privilegio de lectura de mensajes
+intents.message_content = True
+# Crear un bot en la variable cliente y transferirle los privilegios
+bot = commands.Bot(command_prefix = "!", intents=intents)
+
+a1 = "¡EY! Veo que quieres ayudar al mundo, pues puedes hacer papel reciclado apartir de otros papeles ya usados, conlleva todo un proceso, quizá este video pueda ayudar: https://www.youtube.com/watch?v=yydUkfMeqM4"
+a2 = "¿Sabías que es mejor tomar el bus que ir en automovil? Ultilizar el transporte público reduce la cantidad de producción de humos tóxicos para el medio hambiente ¡¡Ya sabes!!"
+a3 = "¡¿CERRASTE BIEN EL CAÑO DE AGUA?! Recuerda que el agua es de los recursos más valiosos que tenemos en nuestro planeta y hay que cuidarlo, no malgastarlo. También es bueno tener conciencia del uso de los dispositivos eléctricos, recerda desconectar tu cargador 😉"
+a4 = "MIRA QUÉ INTERESANTE: https://www.youtube.com/watch?v=YiHTNfKJwAw"
+ayudas = [a1, a2, a3, a4]
+
+@bot.event
+async def on_ready():
+    print(f'Hemos iniciado sesión como {bot.user}')
+
+@bot.command()
+async def ayuda(ctx):
+    aydu_alea = random.choice(ayudas)
+    await ctx.send((f"💡 Así podrías ayudar a nuestro planeta 🌎 : {aydu_alea}"))
+
+
+
