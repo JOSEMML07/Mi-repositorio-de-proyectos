@@ -1,0 +1,13 @@
+#Resultados del formulario
+@app.route('/submit', methods=['POST'])
+def submit_form():
+    # Declarar variables para la recogida de datos
+    name = request.form['name']
+    email = request.form['email']
+    address = request.form['address']
+    date = request.form['date']
+    with open("text.txt", "a", encoding = "utf-8") as f:
+        f.write(name + "\n")
+        f.write(email + "\n")
+        f.write(address + "\n")
+        f.write(date + "\n")
